@@ -1,0 +1,113 @@
+@media (min-width: 768px) {
+      .container {
+        padding: 0 2rem;
+      }
+
+      .hero-cta-group {
+        flex-direction: row;
+        width: auto;
+      }
+
+      .btn {
+        width: auto;
+      }
+
+      .verified-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .facilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .location-grid {
+        grid-template-columns: 1fr 1.25fr;
+      }
+
+      .coach-spotlight {
+        padding: 2.5rem;
+      }
+
+      .coach-grid {
+        grid-template-columns: 1.5fr 1fr;
+      }
+
+      .mobile-sticky-bar {
+        display: none;
+      }
+
+      .site-footer {
+        padding-bottom: 3.5rem;
+      }
+
+      .footer-inner {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hamburger-btn {
+        display: none;
+      }
+
+      .desktop-nav {
+        display: flex;
+      }
+
+      .header-cta {
+        display: inline-flex;
+        padding: 0.7rem 1.25rem;
+        font-size: 0.76rem;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .hero-3d-stage {
+        height: 460px;
+      }
+
+      .verified-strip {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .facilities-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+
+/* Responsive refinements for small phones, tablets and large desktops. */
+@media (max-width: 380px) {
+  .container { padding-left: 1rem; padding-right: 1rem; }
+  .hero-title { font-size: clamp(1.85rem, 9vw, 2.45rem); }
+  .rating-pill { font-size: .72rem; }
+  .hero-3d-stage { height: 286px; min-height: 286px; padding: .85rem; }
+  .stage-top-bar { font-size: .62rem; letter-spacing: .1em; }
+  .verified-item { padding: .95rem; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 1.5rem; }
+  .hero-3d-stage { height: 390px; }
+  .facilities-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pricing-card:last-child { grid-column: 1 / -1; }
+  .location-grid { grid-template-columns: 1fr 1.1fr; }
+}
+@media (min-width: 1024px) {
+  .hero-3d-stage { height: 460px; }
+  .facilities-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 1440px) {
+  .hero-section { min-height: 850px; }
+  .hero-grid { gap: 4rem; }
+}
