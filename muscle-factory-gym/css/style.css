@@ -1,0 +1,871 @@
+/* ==========================================================================
+       1. STRICT 4-COLOR LUXURY PALETTE & DESIGN TOKENS
+       Matte Obsidian Black (#09090B) | Deep Charcoal (#141416)
+       Alabaster White (#F4F4F6)      | Brushed Gold (#C8A45D)
+       ========================================================================== */
+    :root {
+      --obsidian: #09090B;
+      --obsidian-rgb: 9, 9, 11;
+      --charcoal: #141416;
+      --charcoal-rgb: 20, 20, 22;
+      --alabaster: #F4F4F6;
+      --alabaster-rgb: 244, 244, 246;
+      --gold: #C8A45D;
+      --gold-rgb: 200, 164, 93;
+
+      --font-display: 'Cinzel', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --border-gold-subtle: 1px solid rgba(var(--gold-rgb), 0.22);
+      --border-gold-strong: 1px solid rgba(var(--gold-rgb), 0.65);
+      --shadow-luxury: 0 24px 48px rgba(var(--obsidian-rgb), 0.85);
+      --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--obsidian);
+      color: var(--alabaster);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body {
+      background-color: var(--obsidian);
+      color: var(--alabaster);
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Fixed 3D WebGL Background/Hero Canvas */
+    #webgl-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.92;
+    }
+
+    /* Ambient Luxury Vignette Overlay */
+    .vignette-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: radial-gradient(
+        circle at 50% 35%,
+        rgba(var(--obsidian-rgb), 0.15) 0%,
+        rgba(var(--obsidian-rgb), 0.72) 65%,
+        rgba(var(--obsidian-rgb), 0.96) 100%
+      );
+    }
+
+    /* Main Content Wrapper Above WebGL Layer */
+    .page-wrapper {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ==========================================================================
+       2. TYPOGRAPHY & REUSABLE LUXURY BADGES / BUTTONS
+       ========================================================================== */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(var(--charcoal-rgb), 0.85);
+      border: var(--border-gold-subtle);
+      padding: 0.45rem 0.95rem;
+      border-radius: 2px;
+      margin-bottom: 1.25rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: var(--gold);
+      transform: rotate(45deg);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: 0.04em;
+      color: var(--alabaster);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .section-title span {
+      color: var(--gold);
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: rgba(var(--alabaster-rgb), 0.78);
+      max-width: 640px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Luxury Brushed-Gold & Obsidian Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 1rem 1.75rem;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      text-align: center;
+      width: 100%;
+    }
+
+    .btn-gold {
+      background-color: var(--gold);
+      color: var(--obsidian);
+      border: 1px solid var(--gold);
+      box-shadow: 0 10px 28px rgba(var(--gold-rgb), 0.25);
+    }
+
+    .btn-gold:hover,
+    .btn-gold:focus-visible {
+      background-color: var(--alabaster);
+      color: var(--obsidian);
+      border-color: var(--alabaster);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(var(--gold-rgb), 0.4);
+    }
+
+    .btn-outline {
+      background-color: rgba(var(--charcoal-rgb), 0.85);
+      color: var(--alabaster);
+      border: var(--border-gold-strong);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-outline:hover,
+    .btn-outline:focus-visible {
+      background-color: var(--gold);
+      color: var(--obsidian);
+      transform: translateY(-2px);
+    }
+
+    .btn-icon {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       4. HERO SECTION & INTERACTIVE 3D WEBGL SHOWCASE
+       ========================================================================== */
+    .hero-section {
+      padding-top: 96px;
+      padding-bottom: 4rem;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    /* Verified Google Maps Rating Pill */
+    .rating-pill {
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      background: rgba(var(--charcoal-rgb), 0.92);
+      border: var(--border-gold-strong);
+      padding: 0.5rem 0.95rem;
+      border-radius: 2px;
+      margin-bottom: 1.25rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--alabaster);
+    }
+
+    .rating-stars {
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 6vw, 4.1rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: 0.03em;
+      color: var(--alabaster);
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+    }
+
+    .hero-title .gold-accent {
+      color: var(--gold);
+      display: block;
+    }
+
+    .hero-club-tag {
+      font-family: var(--font-display);
+      font-size: clamp(0.95rem, 2.2vw, 1.3rem);
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-address {
+      font-size: 0.95rem;
+      color: rgba(var(--alabaster-rgb), 0.84);
+      max-width: 580px;
+      margin-bottom: 1.75rem;
+      padding-left: 0.9rem;
+      border-left: 2px solid var(--gold);
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    /* Interactive 3D Stage Frame for Mobile & Desktop Touch Manipulation */
+    .hero-3d-stage {
+      width: 100%;
+      height: 330px;
+      position: relative;
+      border: var(--border-gold-subtle);
+      background: radial-gradient(
+        circle at 50% 50%,
+        rgba(var(--gold-rgb), 0.12) 0%,
+        rgba(var(--charcoal-rgb), 0.45) 70%,
+        rgba(var(--obsidian-rgb), 0.85) 100%
+      );
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+      cursor: grab;
+      touch-action: pan-y;
+      user-select: none;
+    }
+
+    .hero-3d-stage:active {
+      cursor: grabbing;
+    }
+
+    .stage-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      pointer-events: none;
+    }
+
+    .stage-hint {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(var(--alabaster-rgb), 0.65);
+      text-align: center;
+      pointer-events: none;
+    }
+
+    /* Quick Verified Specs Bar */
+    .verified-strip {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: rgba(var(--gold-rgb), 0.22);
+      border: var(--border-gold-subtle);
+      margin-top: 1rem;
+    }
+
+    .verified-item {
+      background: var(--charcoal);
+      padding: 1.15rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .verified-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .verified-value {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--alabaster);
+    }
+
+    /* ==========================================================================
+       5. WORKOUT & RECOVERY FACILITIES (3D TILT PHOTOGRAPHY CARDS)
+       ========================================================================== */
+    .section-block {
+      padding: 4.5rem 0;
+      position: relative;
+      border-top: var(--border-gold-subtle);
+    }
+
+    .facilities-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      perspective: 1200px;
+    }
+
+    .facility-card {
+      position: relative;
+      background: var(--charcoal);
+      border: var(--border-gold-subtle);
+      border-radius: 2px;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: transform 0.2s ease-out, border-color 0.35s ease, box-shadow 0.35s ease;
+      box-shadow: var(--shadow-luxury);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .facility-card:hover {
+      border-color: var(--gold);
+    }
+
+    /* Dynamic 3D Specular Glare Layer */
+    .card-glare {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background: radial-gradient(
+        circle at 50% 50%,
+        rgba(var(--gold-rgb), 0.18),
+        transparent 60%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .facility-card:hover .card-glare {
+      opacity: 1;
+    }
+
+    .facility-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 230px;
+      overflow: hidden;
+      background: var(--obsidian);
+    }
+
+    .facility-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(35%) contrast(118%) brightness(0.82);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+    }
+
+    .facility-card:hover .facility-img-wrap img {
+      transform: scale(1.06);
+      filter: grayscale(10%) contrast(122%) brightness(0.92);
+    }
+
+    .facility-zone-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 2;
+      background: rgba(var(--obsidian-rgb), 0.9);
+      border: var(--border-gold-strong);
+      color: var(--gold);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.75rem;
+    }
+
+    .facility-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+      transform: translateZ(20px);
+    }
+
+    .facility-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--alabaster);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.04em;
+    }
+
+    .facility-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .spec-pill {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--alabaster);
+      background: rgba(var(--obsidian-rgb), 0.85);
+      border: 1px solid rgba(var(--gold-rgb), 0.28);
+      padding: 0.32rem 0.7rem;
+      border-radius: 2px;
+    }
+
+    .facility-footer {
+      padding-top: 1rem;
+      border-top: 1px solid rgba(var(--gold-rgb), 0.14);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .facility-link {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* ==========================================================================
+       6. COACH UTKARSH & GOOGLE REVIEW SPOTLIGHT
+       ========================================================================== */
+    .coach-spotlight {
+      background: linear-gradient(
+        145deg,
+        rgba(var(--charcoal-rgb), 0.96) 0%,
+        rgba(var(--obsidian-rgb), 0.98) 100%
+      );
+      border: var(--border-gold-strong);
+      padding: 1.75rem 1.35rem;
+      border-radius: 2px;
+      position: relative;
+      box-shadow: var(--shadow-luxury);
+    }
+
+    .coach-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      align-items: center;
+    }
+
+    .coach-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+    }
+
+    .verified-google-tag {
+      background: var(--gold);
+      color: var(--obsidian);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.65rem;
+    }
+
+    .coach-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+      line-height: 1.45;
+      color: var(--alabaster);
+      margin-bottom: 1.25rem;
+      font-weight: 600;
+    }
+
+    .coach-quote span {
+      color: var(--gold);
+    }
+
+    .coach-meta {
+      font-size: 0.88rem;
+      color: rgba(var(--alabaster-rgb), 0.8);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ==========================================================================
+       7. VERIFIED MEMBERSHIP PRICING (PRE-BOOKING & STANDARD RATES)
+       ========================================================================== */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+
+    .pricing-card {
+      background: var(--charcoal);
+      border: var(--border-gold-subtle);
+      padding: 2rem 1.5rem;
+      border-radius: 2px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition-smooth);
+      box-shadow: var(--shadow-luxury);
+    }
+
+    .pricing-card.featured {
+      border: var(--border-gold-strong);
+      background: linear-gradient(
+        180deg,
+        rgba(var(--gold-rgb), 0.09) 0%,
+        rgba(var(--charcoal-rgb), 0.98) 38%
+      );
+    }
+
+    .limit-ribbon {
+      display: inline-block;
+      align-self: flex-start;
+      background: var(--gold);
+      color: var(--obsidian);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.75rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .pricing-tier-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--alabaster);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .price-block {
+      margin: 1.1rem 0;
+      padding-bottom: 1.1rem;
+      border-bottom: var(--border-gold-subtle);
+    }
+
+    .price-offer {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .price-regular {
+      display: block;
+      margin-top: 0.45rem;
+      font-size: 0.85rem;
+      color: rgba(var(--alabaster-rgb), 0.68);
+    }
+
+    .price-regular del {
+      color: rgba(var(--alabaster-rgb), 0.48);
+      margin-left: 0.25rem;
+    }
+
+    .custom-rate-text {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1.35;
+    }
+
+    .pricing-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .pricing-features li {
+      font-size: 0.88rem;
+      color: rgba(var(--alabaster-rgb), 0.88);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .pricing-features li::before {
+      content: "◆";
+      color: var(--gold);
+      font-size: 0.7rem;
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       8. LOCATION, OPERATING HOURS & LIVE GOOGLE MAPS EMBED
+       ========================================================================== */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+
+    .location-card {
+      background: var(--charcoal);
+      border: var(--border-gold-subtle);
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .info-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      padding-bottom: 1.15rem;
+      border-bottom: 1px solid rgba(var(--gold-rgb), 0.14);
+    }
+
+    .info-group:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .info-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .info-value {
+      font-size: 0.98rem;
+      color: var(--alabaster);
+      font-weight: 500;
+    }
+
+    .map-frame-container {
+      width: 100%;
+      min-height: 360px;
+      height: 100%;
+      background: var(--charcoal);
+      border: var(--border-gold-strong);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .map-frame-container iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      border: 0;
+      filter: grayscale(75%) invert(90%) contrast(115%);
+      transition: filter 0.4s ease;
+    }
+
+    .map-frame-container:hover iframe {
+      filter: grayscale(15%) invert(0%) contrast(100%);
+    }
+
+    /* ==========================================================================
+       9. FOOTER & FLOATING MOBILE WHATSAPP CONCIERGE BAR
+       ========================================================================== */
+    .site-footer {
+      background: var(--obsidian);
+      border-top: var(--border-gold-subtle);
+      padding: 3.5rem 0 6.5rem;
+      font-size: 0.85rem;
+      color: rgba(var(--alabaster-rgb), 0.68);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      justify-content: space-between;
+    }
+
+    /* Sticky Bottom Action Bar on Mobile Devices */
+    .mobile-sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 95;
+      background: rgba(var(--obsidian-rgb), 0.95);
+      border-top: var(--border-gold-strong);
+      padding: 0.75rem 1rem;
+      display: flex;
+      gap: 0.75rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .mobile-sticky-bar .btn {
+      padding: 0.8rem 1rem;
+      font-size: 0.76rem;
+    }
+
+    /* ==========================================================================
+       10. DESKTOP & TABLET BREAKPOINTS (PROGRESSIVE ENHANCEMENT)
+       ========================================================================== */
+
+
+/* Premium refinement layer — keeps the original brand palette and existing component styles. */
+:root {
+  --radius-card: 20px;
+  --radius-panel: 24px;
+  --radius-button: 14px;
+  --shadow-card: 0 18px 48px rgba(0, 0, 0, .34);
+  --shadow-gold: 0 12px 30px rgba(200, 164, 93, .16);
+  --focus-ring: 0 0 0 3px rgba(200, 164, 93, .38);
+}
+html { scroll-padding-top: 104px; }
+body { background: var(--obsidian); }
+#webgl-container { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; opacity: .96; pointer-events: none; overflow: hidden; border-radius: inherit; }
+#webgl-container canvas { display: block; width: 100%; height: 100%; }
+.vignette-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; border-radius: inherit; background: radial-gradient(circle at 50% 45%, rgba(9,9,11,.05) 0%, rgba(9,9,11,.38) 60%, rgba(9,9,11,.78) 100%); }
+.page-wrapper { isolation: isolate; }
+.container { max-width: 1280px; }
+.hero-section { padding-top: 122px; padding-bottom: 4.5rem; overflow: hidden; }
+.hero-content { max-width: 680px; }
+.hero-title { letter-spacing: .015em; }
+.hero-3d-stage { isolation: isolate; overflow: hidden; border-radius: 24px; min-height: 330px; border: 1px solid rgba(var(--gold-rgb), .38); background: radial-gradient(circle at 50% 46%, rgba(200,164,93,.14), rgba(20,20,22,.9) 70%); box-shadow: 0 24px 65px rgba(0,0,0,.42), inset 0 1px rgba(244,244,246,.04); }
+.stage-top-bar, .stage-hint { position: relative; z-index: 2; }
+.stage-top-bar { text-shadow: 0 1px 12px rgba(0,0,0,.7); }
+.stage-hint { margin-top: auto; padding-top: 1rem; }
+.btn { width: auto; min-height: 48px; padding: .92rem 1.4rem; border-radius: var(--radius-button); letter-spacing: .09em; font-size: .78rem; box-shadow: none; }
+.btn-gold { box-shadow: var(--shadow-gold); }
+.btn-outline { border-radius: var(--radius-button); }
+.eyebrow { border-radius: 999px; }
+.rating-pill { border-radius: 999px; padding: .58rem 1rem; }
+.section-block { padding: clamp(3.5rem, 7vw, 6.2rem) 0; scroll-margin-top: 104px; }
+#about { scroll-margin-top: 108px; }
+.facility-card, .pricing-card, .coach-spotlight, .location-card, .map-frame-container { border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+.facility-img-wrap, .facility-img-wrap img { border-radius: 0; }
+.facility-card { overflow: hidden; }
+.facility-card:hover, .pricing-card:hover { border-color: rgba(var(--gold-rgb), .7); box-shadow: 0 24px 56px rgba(0,0,0,.48); }
+.facility-body { padding: 1.5rem; }
+.facility-zone-tag, .spec-pill, .limit-ribbon, .verified-google-tag { border-radius: 999px; }
+.coach-spotlight { padding: clamp(1.5rem, 4vw, 3rem); }
+.pricing-card { padding: clamp(1.45rem, 2vw, 2rem); }
+.pricing-card .btn { width: 100%; }
+.verified-strip { overflow: hidden; border-radius: 18px; }
+.verified-item { min-width: 0; }
+.verified-value { overflow-wrap: anywhere; }
+.location-card { border-radius: var(--radius-card); }
+.info-value a { color: var(--alabaster); text-decoration: underline; text-decoration-color: rgba(var(--gold-rgb), .55); text-underline-offset: 4px; }
+.location-actions { display: flex; flex-wrap: wrap; gap: .7rem; }
+.location-actions .btn { flex: 1 1 150px; }
+.map-frame-container { overflow: hidden; }
+.map-frame-container iframe { display: block; }
+.site-footer { padding-bottom: 3.5rem; }
+.mobile-sticky-bar { padding-bottom: calc(.75rem + env(safe-area-inset-bottom)); }
+.mobile-sticky-bar .btn { min-width: 0; flex: 1 1 0; }
+.back-to-top { position: fixed; right: 1.15rem; bottom: 1.25rem; z-index: 90; width: 46px; height: 46px; display: grid; place-items: center; border: 1px solid rgba(var(--gold-rgb), .58); border-radius: 50%; background: rgba(var(--charcoal-rgb), .94); color: var(--gold); font-size: 1.45rem; box-shadow: 0 12px 28px rgba(0,0,0,.32); opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .25s ease, transform .25s ease, visibility .25s ease; }
+.back-to-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+@media (max-width: 767px) {
+  html { scroll-padding-top: 84px; }
+  .hero-section { padding-top: 104px; padding-bottom: 3.3rem; }
+  .hero-3d-stage { min-height: 300px; height: 320px; }
+  .hero-cta-group { gap: .7rem; }
+  .hero-cta-group .btn { width: 100%; }
+  .section-block { scroll-margin-top: 84px; }
+  .mobile-sticky-bar { gap: .55rem; }
+  .mobile-sticky-bar .btn { font-size: .68rem; padding: .8rem .6rem; letter-spacing: .04em; }
+  .site-footer { padding-bottom: 8.2rem; }
+  .back-to-top { right: .8rem; bottom: 5.3rem; }
+  .location-actions { flex-direction: column; }
+  .location-actions .btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
